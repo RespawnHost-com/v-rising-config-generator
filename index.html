@@ -1,32 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: https://ogp.me/ns#">
     <head>
-        <!-- Meta Data -->
         <meta charset="utf-8">
-        <meta name="title" content="V-Rising Server Config Generator">
-        <meta name="description" content="Generate V-Rising server configuration">
-        <meta name="keywords" content="v-rising, json, server, config, generator, windows, gaming, steam, vampire, easy of use, easy, accessibility">
-        <meta name="robots" content="index, follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Primary Meta -->
+        <title>V Rising Server Config Generator | RespawnHost</title>
+        <meta name="title" content="V Rising Server Config Generator | RespawnHost">
+        <meta name="description" content="Free V Rising ServerGameSettings.json generator. Configure game modes, PvP rules, castle settings, drop rates and more for your dedicated V Rising server. By RespawnHost.">
+        <meta name="keywords" content="v rising, server config, servergamesettings, json generator, v rising server settings, dedicated server, pvp, pve, game server, respawnhost, vampire, stunlock studios">
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="language" content="English">
-        <meta name="author" content="mbround18">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="RespawnHost">
+        <meta name="publisher" content="RespawnHost">
+        <meta name="theme-color" content="#090a13">
+        <link rel="canonical" href="https://v-rising-config.respawnhost.com/">
+
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
-        <meta property="og:url" content="https://v-rising.gamerdrop.zone/">
-        <meta property="og:title" content="V-Rising Server Config Generator">
-        <meta property="og:description" content="Generate V-Rising server configuration">
-        <meta property="og:image" content="https://v-rising.gamerdrop.zone/V_Rising-share.jpg">
+        <meta property="og:site_name" content="RespawnHost">
+        <meta property="og:url" content="https://v-rising-config.respawnhost.com/">
+        <meta property="og:title" content="V Rising Server Config Generator | RespawnHost">
+        <meta property="og:description" content="Free V Rising ServerGameSettings.json generator. Configure game modes, PvP rules, castle settings, drop rates and more for your dedicated server.">
+        <meta property="og:image" content="https://v-rising-config.respawnhost.com/og-image.jpg">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:image:alt" content="V Rising Server Config Generator by RespawnHost">
+        <meta property="og:locale" content="en_US">
 
         <!-- Twitter -->
-        <meta property="twitter:card" content="summary_large_image">
-        <meta property="twitter:url" content="https://v-rising.gamerdrop.zone/">
-        <meta property="twitter:title" content="V-Rising Server Config Generator">
-        <meta property="twitter:description" content="Generate V-Rising server configuration">
-        <meta property="twitter:image" content="https://v-rising.gamerdrop.zone/V_Rising-share.jpg">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:url" content="https://v-rising-config.respawnhost.com/">
+        <meta name="twitter:title" content="V Rising Server Config Generator | RespawnHost">
+        <meta name="twitter:description" content="Free V Rising ServerGameSettings.json generator. Configure game modes, PvP, castle settings and more.">
+        <meta name="twitter:image" content="https://v-rising-config.respawnhost.com/og-image.jpg">
+        <meta name="twitter:image:alt" content="V Rising Server Config Generator by RespawnHost">
 
-        <!-- Favicon -->
-        <link rel="icon" type="image/x-icon" href="./assets/icon.png">
+        <!-- Favicon (RespawnHost) -->
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+        <!-- Schema.org JSON-LD -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "V Rising Server Config Generator",
+            "description": "Free online tool to generate ServerGameSettings.json for V Rising dedicated servers. Configure game modes, PvP rules, castle settings, drop rates and more.",
+            "url": "https://v-rising-config.respawnhost.com/",
+            "applicationCategory": "GameApplication",
+            "operatingSystem": "Any",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "EUR"
+            },
+            "creator": {
+                "@type": "Organization",
+                "name": "RespawnHost",
+                "url": "https://respawnhost.com",
+                "logo": "https://respawnhost.com/logo.png"
+            },
+            "about": {
+                "@type": "VideoGame",
+                "name": "V Rising",
+                "gamePlatform": "PC",
+                "genre": ["Survival", "Action RPG"],
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "Stunlock Studios"
+                }
+            },
+            "inLanguage": "en",
+            "isAccessibleForFree": true,
+            "browserRequirements": "Requires JavaScript"
+        }
+        </script>
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "RespawnHost",
+                    "item": "https://respawnhost.com"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "V Rising Server Hosting",
+                    "item": "https://respawnhost.com/en/v-rising-server-hosting"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Config Generator",
+                    "item": "https://v-rising-config.respawnhost.com/"
+                }
+            ]
+        }
+        </script>
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "What is ServerGameSettings.json?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "ServerGameSettings.json is the configuration file for V Rising dedicated servers. It controls game modes (PvP/PvE), castle damage rules, player damage settings, drop rates, crafting modifiers, and many other gameplay parameters."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How do I use the V Rising Config Generator?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Select your desired settings using the buttons and input fields, then click 'Generate Config' to create your ServerGameSettings.json file. Copy the output and place it in your V Rising server directory."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Where do I put the ServerGameSettings.json file?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Place the ServerGameSettings.json file in your V Rising dedicated server's save directory, typically found at: VRisingServer_Data/StreamingAssets/Settings/"
+                    }
+                }
+            ]
+        }
+        </script>
 
         <!-- Google Fonts: DM Sans -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,12 +155,12 @@
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between h-16">
                     <!-- Brand -->
-                    <a href="https://respawnhost.com" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 group">
+                    <a href="https://respawnhost.com" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 group" aria-label="RespawnHost - Game Server Hosting">
                         <div class="w-8 h-8 rounded-lg bg-white/6 shadow-[inset_0_4px_5.4px_-3px_rgba(128,128,128,0.31)] flex items-center justify-center text-white/80 font-black text-sm">R</div>
                         <span class="text-lg font-bold tracking-tight text-white/80 group-hover:text-white transition-colors">RespawnHost</span>
                     </a>
                     <!-- Nav -->
-                    <nav class="flex items-center gap-2 sm:gap-3">
+                    <nav class="flex items-center gap-2 sm:gap-3" aria-label="Main navigation">
                         <button data-route id="Nav-Generator" data-active class="nav-btn active">Generator</button>
                         <button data-route id="Nav-ServerGameSettings" class="nav-btn">JSON Output</button>
                         <a href="https://cdn.stunlock.com/blog/2022/05/25083113/Game-Server-Settings.pdf" target="_blank" rel="noopener noreferrer" class="nav-link">Source PDF</a>
@@ -67,10 +175,15 @@
             <div class="absolute inset-0 bg-gradient-to-b from-white/2 via-transparent to-transparent"></div>
             <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
                 <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-3">
-                    Server<span class="text-white/50">Game</span>Settings
+                    V Rising <span class="text-white/50">Config</span> Generator
                 </h1>
-                <p class="text-white/40 text-sm sm:text-base max-w-lg mx-auto">
-                    Configure your V Rising dedicated server settings with ease. Adjust game modes, PvP rules, castle settings, and more.
+                <p class="text-white/40 text-sm sm:text-base max-w-xl mx-auto">
+                    Generate your ServerGameSettings.json for V Rising dedicated servers. Configure game modes, PvP rules, castle settings, drop rates and more.
+                </p>
+                <p class="mt-3">
+                    <a href="https://respawnhost.com/en/v-rising-server-hosting" target="_blank" rel="noopener noreferrer" class="btn-glass text-xs">
+                        <span class="relative z-1">Rent a V Rising Server from &euro;0.40/day</span>
+                    </a>
                 </p>
             </div>
         </section>
@@ -80,7 +193,7 @@
 
             <!-- Generator Page -->
             <div data-nav-id="Nav-Generator">
-                <form id="config" name="config" class="space-y-4">
+                <form id="config" name="config" class="space-y-4" aria-label="V Rising server configuration form">
                 </form>
                 <div class="mt-8 flex justify-center">
                     <button id="generate-btn" class="btn-glass btn-glass-lg">
@@ -108,9 +221,43 @@
 
         <!-- Footer -->
         <footer class="border-t border-white/5 mt-12">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/30">
-                <span>Powered by <a href="https://respawnhost.com" target="_blank" rel="noopener noreferrer" class="text-white/50 hover:text-white transition-colors">RespawnHost</a></span>
-                <span>V Rising Config Generator &mdash; Open Source</span>
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <!-- Footer Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-6 text-sm">
+                    <!-- Brand -->
+                    <div>
+                        <a href="https://respawnhost.com" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 mb-3 group">
+                            <div class="w-6 h-6 rounded bg-white/6 shadow-[inset_0_3px_4px_-2px_rgba(128,128,128,0.25)] flex items-center justify-center text-white/70 font-black text-xs">R</div>
+                            <span class="font-bold text-white/70 group-hover:text-white transition-colors">RespawnHost</span>
+                        </a>
+                        <p class="text-white/30 text-xs leading-relaxed">
+                            Game server hosting with pay-per-use pricing. V Rising servers from &euro;0.40/day.
+                        </p>
+                    </div>
+                    <!-- Resources -->
+                    <div>
+                        <h3 class="text-white/50 font-semibold text-xs mb-3">Resources</h3>
+                        <ul class="space-y-1.5 text-xs">
+                            <li><a href="https://respawnhost.com/en/v-rising-server-hosting" target="_blank" rel="noopener noreferrer" class="text-white/30 hover:text-white transition-colors">V Rising Server Hosting</a></li>
+                            <li><a href="https://cdn.stunlock.com/blog/2022/05/25083113/Game-Server-Settings.pdf" target="_blank" rel="noopener noreferrer" class="text-white/30 hover:text-white transition-colors">Official Settings PDF</a></li>
+                            <li><a href="https://github.com/RespawnHost-com/v-rising-config-generator" target="_blank" rel="noopener noreferrer" class="text-white/30 hover:text-white transition-colors">GitHub Repository</a></li>
+                        </ul>
+                    </div>
+                    <!-- Legal -->
+                    <div>
+                        <h3 class="text-white/50 font-semibold text-xs mb-3">Legal</h3>
+                        <ul class="space-y-1.5 text-xs">
+                            <li><a href="https://respawnhost.com/en/imprint" target="_blank" rel="noopener noreferrer" class="text-white/30 hover:text-white transition-colors">Imprint</a></li>
+                            <li><a href="https://respawnhost.com/en/privacy" target="_blank" rel="noopener noreferrer" class="text-white/30 hover:text-white transition-colors">Privacy Policy</a></li>
+                            <li><a href="https://respawnhost.com/en/tos" target="_blank" rel="noopener noreferrer" class="text-white/30 hover:text-white transition-colors">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Bottom Bar -->
+                <div class="border-t border-white/5 pt-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/20">
+                    <span>&copy; 2024&ndash;2026 <a href="https://respawnhost.com" target="_blank" rel="noopener noreferrer" class="text-white/30 hover:text-white transition-colors">RespawnHost</a>. All rights reserved.</span>
+                    <span>V Rising is a trademark of Stunlock Studios. This tool is not affiliated with or endorsed by Stunlock Studios.</span>
+                </div>
             </div>
         </footer>
 
