@@ -1,4 +1,3 @@
-import "virtual:fonts.css";
 import Router from "./router";
 import getConfig from "./utils/getConfig";
 

@@ -1,5 +1,11 @@
 @import 'highlight.js/scss/github-dark.scss';
 
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('/assets/fonts/OpenDyslexic3-Regular.ttf') format('truetype');
+  font-display: auto;
+}
+
 html, body, input, textarea, select, button {
   color: #e8e6e3;
 }
