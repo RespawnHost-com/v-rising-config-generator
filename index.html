@@ -48,15 +48,15 @@
                 <div class="flex items-center justify-between h-16">
                     <!-- Brand -->
                     <a href="https://respawnhost.com" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 group">
-                        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#00ec90] to-[#00bb7f] flex items-center justify-center text-black font-black text-sm">R</div>
-                        <span class="text-lg font-bold tracking-tight text-white group-hover:text-[#00ec90] transition-colors">RespawnHost</span>
+                        <div class="w-8 h-8 rounded-lg bg-white/6 shadow-[inset_0_4px_5.4px_-3px_rgba(128,128,128,0.31)] flex items-center justify-center text-white/80 font-black text-sm">R</div>
+                        <span class="text-lg font-bold tracking-tight text-white/80 group-hover:text-white transition-colors">RespawnHost</span>
                     </a>
                     <!-- Nav -->
                     <nav class="flex items-center gap-2 sm:gap-3">
                         <button data-route id="Nav-Generator" data-active class="nav-btn active">Generator</button>
                         <button data-route id="Nav-ServerGameSettings" class="nav-btn">JSON Output</button>
                         <a href="https://cdn.stunlock.com/blog/2022/05/25083113/Game-Server-Settings.pdf" target="_blank" rel="noopener noreferrer" class="nav-link">Source PDF</a>
-                        <a href="https://github.com/mbround18/v-rising-configs" target="_blank" rel="noopener noreferrer" class="nav-link">GitHub</a>
+                        <a href="https://github.com/RespawnHost-com/v-rising-config-generator" target="_blank" rel="noopener noreferrer" class="nav-link">GitHub</a>
                     </nav>
                 </div>
             </div>
@@ -64,16 +64,12 @@
 
         <!-- Hero -->
         <section class="relative overflow-hidden border-b border-white/5">
-            <div class="absolute inset-0 bg-gradient-to-b from-[#00ec90]/5 via-transparent to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-white/2 via-transparent to-transparent"></div>
             <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#00ec90]/20 bg-[#00ec90]/5 text-[#00ec90] text-xs font-medium mb-4">
-                    <span class="w-1.5 h-1.5 rounded-full bg-[#00ec90] animate-pulse"></span>
-                    V Rising Config Generator
-                </div>
                 <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-3">
-                    Server<span class="text-[#00ec90]">Game</span>Settings
+                    Server<span class="text-white/50">Game</span>Settings
                 </h1>
-                <p class="text-white/50 text-sm sm:text-base max-w-lg mx-auto">
+                <p class="text-white/40 text-sm sm:text-base max-w-lg mx-auto">
                     Configure your V Rising dedicated server settings with ease. Adjust game modes, PvP rules, castle settings, and more.
                 </p>
             </div>
@@ -87,9 +83,9 @@
                 <form id="config" name="config" class="space-y-4">
                 </form>
                 <div class="mt-8 flex justify-center">
-                    <button id="generate-btn" class="btn-primary">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                        Generate Config
+                    <button id="generate-btn" class="btn-glass btn-glass-lg">
+                        <svg class="w-5 h-5 relative z-1 transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover:-translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        <span class="relative z-1">Generate Config</span>
                     </button>
                 </div>
             </div>
@@ -98,9 +94,9 @@
             <div data-nav-id="Nav-ServerGameSettings">
                 <div class="flex items-center justify-between mb-4">
                     <h2 class="text-lg font-semibold text-white/80">ServerGameSettings.json</h2>
-                    <button data-copy class="btn-secondary">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
-                        Copy to Clipboard
+                    <button data-copy class="btn-glass">
+                        <svg class="w-4 h-4 relative z-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                        <span class="relative z-1">Copy to Clipboard</span>
                     </button>
                 </div>
                 <div class="code-output-card">
@@ -113,7 +109,7 @@
         <!-- Footer -->
         <footer class="border-t border-white/5 mt-12">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/30">
-                <span>Powered by <a href="https://respawnhost.com" target="_blank" rel="noopener noreferrer" class="text-[#00ec90]/60 hover:text-[#00ec90] transition-colors">RespawnHost</a></span>
+                <span>Powered by <a href="https://respawnhost.com" target="_blank" rel="noopener noreferrer" class="text-white/50 hover:text-white transition-colors">RespawnHost</a></span>
                 <span>V Rising Config Generator &mdash; Open Source</span>
             </div>
         </footer>

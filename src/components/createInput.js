@@ -58,7 +58,7 @@ export default /**
             <span id="${id}-desc" style="display: block;">${desc}</span>
         `;
   if (!!disabled) {
-    div.style = "background-color: #ccc;";
+    div.style = "background-color: rgb(255 0 0 / 20%)";
     div.querySelector("input").setAttribute("disabled", "disabled");
   }
   div.querySelector("input").setAttribute("id", id);

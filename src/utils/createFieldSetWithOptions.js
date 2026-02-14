@@ -29,61 +29,32 @@ function createFieldSetWithOptions(id, options, config) {
 
   // Attach Options
   const entries = Object.entries(options);
-  // const rangeLabel = createLabel(id, 'input', id);
 
-  const rangeInput = document.createElement("input");
-  rangeInput.setAttribute("id", id);
-  rangeInput.setAttribute("type", "range");
-  rangeInput.setAttribute("min", "0");
-  rangeInput.setAttribute("max", `${entries.length - 1}`);
-  rangeInput.setAttribute("value", `${config?.value || 0}`);
-  rangeInput.setAttribute("step", `${config?.step || 1}`);
+  // Hidden input to store the selected value (read by getConfig)
+  const hiddenInput = document.createElement("input");
+  hiddenInput.setAttribute("id", id);
+  hiddenInput.setAttribute("type", "hidden");
+  hiddenInput.setAttribute("value", `${config?.value || 0}`);
 
   const optionsKeys = Object.keys(options);
 
   if (optionsKeys.includes("TRUE") && optionsKeys.includes("FALSE")) {
-    rangeInput.setAttribute("data-type", "boolean");
+    hiddenInput.setAttribute("data-type", "boolean");
   }
 
   if (config?.disabled) {
-    rangeInput.setAttribute("disabled", "disabled");
-    fieldSet.style = "background-color: #ccc;";
+    hiddenInput.setAttribute("disabled", "disabled");
+    fieldSet.style = "background-color: rgb(255 0 0 / 20%);";
   }
-  rangeInput.onchange = () => {
-    // Setup Information
-    const current = rangeInput.value;
-    const previous = rangeInput.getAttribute("data-prev-value") || 0;
-    const keys = Object.keys(options);
 
-    // Set Desciption
-    const currentId = `${id}-descriptions-${keys[current]}`;
-    const previousId = `${id}-descriptions-${keys[previous]}`;
-    document.getElementById(currentId).style = "display: show;";
-    document.getElementById(previousId).style = "display: none;";
-
-    // Set Option
-    const currentOption = `${id}-option-${keys[current]}`;
-    const previousOption = `${id}-option-${keys[previous]}`;
-    document.getElementById(currentOption).setAttribute("class", "selected");
-    document.getElementById(previousOption).removeAttribute("class");
-
-    // Set Range Input
-    rangeInput.setAttribute("value", current);
-    rangeInput.setAttribute("data-prev-value", current);
-  };
   // Create Descriptions
-  const rangeDescriptions = document.createElement("div");
-  rangeDescriptions.setAttribute("id", `${id}-descriptions`);
-
-  // Create Container
-  const rangeContainer = document.createElement("div");
-  rangeContainer.setAttribute("id", `${id}-container`);
-  rangeContainer.setAttribute("class", "range-container");
+  const descriptions = document.createElement("div");
+  descriptions.setAttribute("id", `${id}-descriptions`);
 
   // Attach Options Container
-  const rangeOptions = document.createElement("div");
-  rangeOptions.setAttribute("id", `${id}-options`);
-  rangeOptions.setAttribute("class", "range-options");
+  const optionsContainer = document.createElement("div");
+  optionsContainer.setAttribute("id", `${id}-options`);
+  optionsContainer.setAttribute("class", "range-options");
 
   entries.forEach(([option, desc], i) => {
     // Append Description
@@ -91,36 +62,48 @@ function createFieldSetWithOptions(id, options, config) {
     optionElement.innerText = `${desc}`;
     if (i === +`${config?.value || 0}`) {
       optionElement.style = "display: show;";
-      rangeInput.setAttribute("data-prev-value", `${i}`);
+      hiddenInput.setAttribute("data-prev-value", `${i}`);
     } else {
       optionElement.style = "display: none;";
     }
     optionElement.setAttribute("id", `${id}-descriptions-${option}`);
-    rangeDescriptions.appendChild(optionElement);
+    descriptions.appendChild(optionElement);
 
-    // Append Option
-    const optionContainer = document.createElement("div");
-    optionContainer.setAttribute("id", `${id}-option-${option}`);
-    optionContainer.innerText = `${option}`;
+    // Append Option Button
+    const optionBtn = document.createElement("div");
+    optionBtn.setAttribute("id", `${id}-option-${option}`);
+    optionBtn.innerText = `${option}`;
     if (i === +`${config?.value || 0}`) {
-      optionContainer.setAttribute("class", "selected");
+      optionBtn.setAttribute("class", "selected");
     }
     if (!config?.disabled) {
-      optionContainer.onclick = () => {
-        rangeInput.value = `${i}`;
-        const event = new Event("change", { target: rangeInput });
-        rangeInput.onchange(event);
+      optionBtn.onclick = () => {
+        const previous = hiddenInput.getAttribute("data-prev-value") || 0;
+        const keys = Object.keys(options);
+
+        // Update description visibility
+        const currentId = `${id}-descriptions-${keys[i]}`;
+        const previousId = `${id}-descriptions-${keys[previous]}`;
+        document.getElementById(currentId).style = "display: show;";
+        document.getElementById(previousId).style = "display: none;";
+
+        // Update selected button
+        const previousOption = `${id}-option-${keys[previous]}`;
+        document.getElementById(previousOption).removeAttribute("class");
+        optionBtn.setAttribute("class", "selected");
+
+        // Update hidden input value
+        hiddenInput.setAttribute("value", `${i}`);
+        hiddenInput.setAttribute("data-prev-value", `${i}`);
       };
     }
-    rangeOptions.appendChild(optionContainer);
+    optionsContainer.appendChild(optionBtn);
   });
 
   // Append Elements
-  rangeContainer.appendChild(rangeOptions);
-  rangeContainer.appendChild(rangeInput);
-  // fieldSet.appendChild(rangeLabel);
-  fieldSet.appendChild(rangeContainer);
-  fieldSet.appendChild(rangeDescriptions);
+  fieldSet.appendChild(hiddenInput);
+  fieldSet.appendChild(optionsContainer);
+  fieldSet.appendChild(descriptions);
 
   document.getElementById("config").appendChild(fieldSet);
 }
