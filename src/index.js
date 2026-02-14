@@ -6,14 +6,33 @@ routes.add("Nav-Generator", () => import("./pages/generator"));
 routes.add("Nav-ServerGameSettings", () =>
   import("./pages/serverGameSettings")
 );
+
+function setActiveNav(activeId) {
+  const navBtns = document.querySelectorAll("nav button[data-route]") || [];
+  navBtns.forEach((btn) => {
+    btn.classList.remove("active");
+    btn.removeAttribute("data-active");
+  });
+  const activeBtn = document.getElementById(activeId);
+  if (activeBtn) {
+    activeBtn.classList.add("active");
+    activeBtn.setAttribute("data-active", "");
+  }
+}
+
 routes.switch("Nav-Generator");
 
-document.getElementById("generate-btn").onclick = () =>
+document.getElementById("generate-btn").onclick = () => {
   routes.switch("Nav-ServerGameSettings");
+  setActiveNav("Nav-ServerGameSettings");
+};
 
 const navBtns = document.querySelectorAll("nav button[data-route]") || [];
 navBtns.forEach((e) => {
-  e.onclick = () => routes.switch(e.getAttribute("id"));
+  e.onclick = () => {
+    routes.switch(e.getAttribute("id"));
+    setActiveNav(e.getAttribute("id"));
+  };
 });
 
 // document.querySelector("[data-share]").onclick = () => {
@@ -28,18 +47,13 @@ navBtns.forEach((e) => {
 // };
 
 document.querySelector("[data-copy]").onclick = () => {
-  /* Get the text field */
-  const input = document.createElement("textarea");
-  input.style.display = "none";
-  input.value = JSON.stringify(getConfig(), null, 2);
-  input.setAttribute("id", "copy-input");
+  const copyBtn = document.querySelector("[data-copy]");
+  const originalHTML = copyBtn.innerHTML;
 
-  /* Select the text field */
-  input.select();
-  input.setSelectionRange(0, 99999); /* For mobile devices */
-
-  /* Copy the text inside the text field */
-  navigator.clipboard.writeText(input.value);
-
-  alert("Copied to clipboard: ServerGameSettings.json");
+  navigator.clipboard.writeText(JSON.stringify(getConfig(), null, 2)).then(() => {
+    copyBtn.innerHTML = `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Copied!`;
+    setTimeout(() => {
+      copyBtn.innerHTML = originalHTML;
+    }, 2000);
+  });
 };

@@ -1,0 +1,417 @@
+@import "tailwindcss";
+@import 'highlight.js/styles/github-dark.css';
+
+/* ============================================================
+   RespawnHost Design System
+   Primary: #00ec90 | Background: #090a13 | Font: DM Sans
+   ============================================================ */
+
+/* --- Base --- */
+html {
+  color-scheme: dark !important;
+}
+
+html, body, input, textarea, select, button {
+  color: #e8e6e3;
+}
+
+* {
+  font-family: 'DM Sans', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  scrollbar-width: thin;
+  scrollbar-color: #1a1b2e #090a13;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Navigation Buttons --- */
+.nav-btn {
+  padding: 0.375rem 0.875rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.5);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  &.active,
+  &[data-active] {
+    color: #00ec90;
+    background-color: rgba(0, 236, 144, 0.08);
+    border-color: rgba(0, 236, 144, 0.2);
+  }
+}
+
+.nav-link {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.35);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  display: none;
+
+  &:hover {
+    color: #00ec90;
+  }
+}
+
+@media (min-width: 640px) {
+  .nav-link {
+    display: inline-block;
+  }
+}
+
+/* --- Primary Button (Generate) --- */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 2rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #000;
+  background: linear-gradient(135deg, #00ec90, #00bb7f);
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 20px rgba(0, 236, 144, 0.15), 0 0 60px rgba(0, 236, 144, 0.05);
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 30px rgba(0, 236, 144, 0.25), 0 0 80px rgba(0, 236, 144, 0.1);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+/* --- Secondary Button (Copy) --- */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #00ec90;
+  background: rgba(0, 236, 144, 0.08);
+  border: 1px solid rgba(0, 236, 144, 0.2);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(0, 236, 144, 0.15);
+    border-color: rgba(0, 236, 144, 0.35);
+  }
+}
+
+/* --- Code Output --- */
+.code-output-card {
+  background: #0d0e17;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  overflow: hidden;
+
+  & pre {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+  }
+
+  & code {
+    background: transparent;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    position: static;
+  }
+}
+
+/* ============================================================
+   Form: Labels and Fieldsets (dynamically generated)
+   ============================================================ */
+
+/* --- Section Labels (top-level labels before fieldsets) --- */
+#config > label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #00ec90;
+  padding: 1.25rem 0 0.375rem 0;
+  margin-top: 0.5rem;
+  border-bottom: 1px solid rgba(0, 236, 144, 0.1);
+}
+
+/* --- Fieldset Card --- */
+fieldset {
+  background: #0d0e17;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  margin: 0.25rem 0;
+  transition: border-color 0.2s ease;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  /* Internal labels (field names) */
+  & label {
+    display: inline;
+    padding-right: 0;
+    margin-right: 0;
+    border-right: none;
+    border-bottom: none;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  /* Description spans */
+  & span[id$="-desc"] {
+    display: block;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.35);
+    margin-top: 0.25rem;
+    line-height: 1.5;
+  }
+
+  /* Range descriptions (option explanations) */
+  & > div[id$="-descriptions"] {
+    margin-top: 0.5rem;
+
+    & span {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.4);
+      line-height: 1.5;
+    }
+  }
+
+  /* Dividers */
+  & hr {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin: 0.75rem 0;
+  }
+}
+
+/* --- Disabled state --- */
+fieldset div[style*="background-color: #ccc"],
+div[style*="background-color: #ccc"] {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+  opacity: 0.5;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+/* --- Range Container --- */
+.range-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+/* --- Range Options (PvP, PvE, etc.) --- */
+.range-options {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  gap: 0.375rem;
+  flex-wrap: wrap;
+
+  & div {
+    padding: 0.375rem 0.625rem;
+    border-radius: 0.375rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-align: center;
+    flex: 1;
+    min-width: 0;
+
+    &:hover {
+      color: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+  }
+}
+
+/* --- Selected State --- */
+.selected {
+  background: rgba(0, 236, 144, 0.1) !important;
+  color: #00ec90 !important;
+  border-color: rgba(0, 236, 144, 0.3) !important;
+}
+
+/* --- Range Input (Slider) --- */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  margin: 0.375rem 0;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #00ec90;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(0, 236, 144, 0.3);
+    transition: box-shadow 0.2s ease;
+  }
+
+  &::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: #00ec90;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(0, 236, 144, 0.3);
+  }
+
+  &:hover::-webkit-slider-thumb {
+    box-shadow: 0 0 14px rgba(0, 236, 144, 0.5);
+  }
+}
+
+/* --- Number / Text Inputs --- */
+input[type="number"],
+input[type="text"] {
+  width: 100%;
+  max-width: 200px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: white;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  outline: none;
+  transition: all 0.2s ease;
+  font-family: 'DM Sans', sans-serif;
+
+  &:focus {
+    border-color: rgba(0, 236, 144, 0.4);
+    background: rgba(0, 236, 144, 0.03);
+    box-shadow: 0 0 0 3px rgba(0, 236, 144, 0.08);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+/* --- Checkbox Inputs --- */
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0.25rem;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.15s ease;
+  vertical-align: middle;
+
+  &:checked {
+    background: #00ec90;
+    border-color: #00ec90;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 5px;
+      width: 5px;
+      height: 9px;
+      border: solid #000;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+  }
+}
+
+/* --- Multi-input fieldset --- */
+.fieldset-multi-input {
+  & div[id$="-item-number"],
+  & div[id$="-item-text"] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+
+    & label {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.6);
+      min-width: 200px;
+    }
+
+    & input {
+      flex: 0 0 auto;
+    }
+
+    & span[id$="-desc"] {
+      flex-basis: 100%;
+    }
+  }
+}
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090a13;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a1b2e;
+  border-radius: 3px;
+
+  &:hover {
+    background: #252740;
+  }
+}
+
+/* --- Selection --- */
+::selection {
+  background: rgba(0, 236, 144, 0.25);
+  color: white;
+}

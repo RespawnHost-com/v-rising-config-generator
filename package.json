@@ -10,6 +10,7 @@
     "lint": "yarn dlx prettier --write ./src/**/*.{js,json}"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.1.18",
     "autoprefixer": "10.4.24",
     "postcss": "8.5.6",
     "sass": "1.97.3",
